@@ -12,9 +12,11 @@ public class EnemyContoroller : MonoBehaviour
     [SerializeField] Vector3 _TargetPosition;
     float _distance;
     [SerializeField] float _stopDistance;
+    GameManager _gam;
     // Start is called before the first frame update
     void Start()
     {
+        _moveSpeed2 = Resources.Load<EnemyData>("EnemyData").Speed;
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -28,7 +30,8 @@ public class EnemyContoroller : MonoBehaviour
         _hp -= damage;
         if(_hp <= 0)
         {
-            Destroy(this.gameObject);
+            GameObject.Find("GameManager").GetComponent<GameManager>().Score(100);
+            Destroy(this.gameObject,0.5f);
         }
     }
     public void EnemyMove()
@@ -54,7 +57,8 @@ public class EnemyContoroller : MonoBehaviour
     {
         if(collision.gameObject.tag == "Target")
         {
-            Destroy(this.gameObject);
+            GameObject.Find("GameManager").GetComponent<GameManager>()._towerhp--;
+            Destroy(this.gameObject,0.2f);
         }
     }
 }
