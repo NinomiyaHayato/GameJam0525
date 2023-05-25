@@ -27,7 +27,7 @@ public class PSpeedDownItem : MonoBehaviour
         // 接触したゲームオブジェクトのタグが”Player”か確認する
         if (col.gameObject.tag == "Player")
         {
-            _Pspeed = GameObject.Find("Player").GetComponent<PlayerController>().speed;
+            _Pspeed = GameObject.Find("Player").GetComponent<PlayerController>()._speed;
             _Pspeed -= _downspeed;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 /// Enemyの移動速度を変更するクラス
 /// アイテムにアタッチして使用する
 /// </summary>
-public class ESpeedDownItem : MonoBehaviour
+public class ESpeedDown : MonoBehaviour
 {
     [Header("Enemyの移動速度の変更値")]
     [SerializeField] float _downspeed;
@@ -21,14 +21,12 @@ public class ESpeedDownItem : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 接触したゲームオブジェクトのタグが”Enemy”か確認する
-        if (col.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "Player")
         {
-            _Espeed = GameObject.Find("Enemy").GetComponent<EnemyContoroller>()._moveSpeed2;
-            _Espeed -= _downspeed;
+            Resources.Load<EnemyData>("EnemyData").Speed -= 1;
         }
+        Destroy(gameObject);
     }
 }
