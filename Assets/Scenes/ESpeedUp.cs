@@ -8,13 +8,14 @@ public class ESpeedUpItem : MonoBehaviour
 {
     [Header("Enemy‚ÌˆÚ“®‘¬“x‚Ì•ÏX’l")]
     [SerializeField] float _upspeed;
+    [SerializeField] float _destroytime;
     public float _Espeed;
     public float _time;
 
     void Update()
     {
         _time += Time.deltaTime;
-        if (_time >= 10)
+        if (_time >= _destroytime)
         {
             _time = 0;
             Destroy(gameObject);

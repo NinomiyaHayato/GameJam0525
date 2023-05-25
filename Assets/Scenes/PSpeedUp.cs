@@ -8,13 +8,14 @@ public class PSpeedUpItem : MonoBehaviour
 {
     [Header("Player‚ÌˆÚ“®‘¬“x‚Ì•ÏX’l")]
     [SerializeField] float upspeed;
+    [SerializeField] float _destroytime;
     public float _Pspeed;
     public float time;
 
     void Update()
     {
         time += Time.deltaTime;
-        if (time >= 10)
+        if (time >= _destroytime)
         {
             time = 0;
             Destroy(gameObject);
